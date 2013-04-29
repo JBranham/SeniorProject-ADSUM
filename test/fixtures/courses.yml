@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  user_id: 1
+  f_day: 2013-04-29
+  l_day: 2013-04-29
+
+two:
+  name: MyString
+  user_id: 1
+  f_day: 2013-04-29
+  l_day: 2013-04-29

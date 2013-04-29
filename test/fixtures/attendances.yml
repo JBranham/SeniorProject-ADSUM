@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Date: 2013-04-29
+  present: false
+  absent: false
+  tardy: false
+  excused: false
+  student_id: 1
+  course_id: 1
+
+two:
+  Date: 2013-04-29
+  present: false
+  absent: false
+  tardy: false
+  excused: false
+  student_id: 1
+  course_id: 1

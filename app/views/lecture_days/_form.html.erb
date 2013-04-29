@@ -1,0 +1,56 @@
+<%= form_for @lecture_day, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :monday, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :monday, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :tuesday, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :tuesday, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :wednesday, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :wednesday, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :thursday, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :thursday, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :friday, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :friday, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :saturday, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :saturday, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :sunday, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :sunday, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :course_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :course_id, :class => 'number_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                lecture_days_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -1,4 +1,18 @@
 ADSUM2::Application.routes.draw do
+  resources :users
+
+  resources :students
+
+  resources :pass_d_points
+
+  resources :lecture_days
+
+  resources :designated_points
+
+  resources :courses
+
+  resources :attendances
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

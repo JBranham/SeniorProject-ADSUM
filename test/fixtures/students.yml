@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fname: MyString
+  lname: MyString
+  student_no: 1
+  points: 1
+  preferred_name: MyString
+  course_id: 1
+
+two:
+  fname: MyString
+  lname: MyString
+  student_no: 1
+  points: 1
+  preferred_name: MyString
+  course_id: 1
