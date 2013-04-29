@@ -41,14 +41,21 @@ class PassDPointsController < ApplicationController
   # POST /pass_d_points.json
   def create
     @pass_d_point = PassDPoint.new(params[:pass_d_point])
+    @course = Course.find_by_id(session[:course_id])
+    @student = Student.find_by_id(1)
+    
+    num = 3
+   
+      @student.points += num
+  
 
     respond_to do |format|
       if @pass_d_point.save
-        format.html { redirect_to @pass_d_point, notice: 'Pass d point was successfully created.' }
-        format.json { render json: @pass_d_point, status: :created, location: @pass_d_point }
+        format.html { redirect_to @course, notice: 'Points Saved' }
+        format.json { render json: @course, status: :created, location: @pass_d_point }
       else
         format.html { render action: "new" }
-        format.json { render json: @pass_d_point.errors, status: :unprocessable_entity }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
   end

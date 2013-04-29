@@ -3,6 +3,7 @@ class LectureDaysController < ApplicationController
   # GET /lecture_days.json
   def index
     @lecture_days = LectureDay.all
+    @course = Course.find_by_id(session[:course_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +26,7 @@ class LectureDaysController < ApplicationController
   # GET /lecture_days/new.json
   def new
     @lecture_day = LectureDay.new
+    #@course = Course.find_by_id(session[:course_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +43,7 @@ class LectureDaysController < ApplicationController
   # POST /lecture_days.json
   def create
     @lecture_day = LectureDay.new(params[:lecture_day])
+    @course = Course.find_by_id(session[:course_id])
 
     respond_to do |format|
       if @lecture_day.save
