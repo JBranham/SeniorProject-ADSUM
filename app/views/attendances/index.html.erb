@@ -31,7 +31,7 @@
     <td><%= attendance.attendance_to_asterisk(attendance.excused) %></td><td></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_attendance_path(attendance), :class => 'btn btn-mini' %>
+                      edit_attendance_path(attendance.id), :class => 'btn btn-mini' %>
           <%= link_to 'Delete', attendance, method: :delete, data: { confirm: 'Are you sure?' },
                       :class => 'btn btn-mini btn-danger' %>
         </td>

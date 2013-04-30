@@ -42,11 +42,6 @@ class PassDPointsController < ApplicationController
   def create
     @pass_d_point = PassDPoint.new(params[:pass_d_point])
     @course = Course.find_by_id(session[:course_id])
-    @student = Student.find_by_id(1)
-    
-    num = 3
-   
-      @student.points += num
   
 
     respond_to do |format|
