@@ -1,27 +1,46 @@
 <%- model_class = Course -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1><%= @course.name %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @course.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @course.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:f_day) %>:</strong></dt>
-  <dd><%= @course.f_day %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:l_day) %>:</strong></dt>
-  <dd><%= @course.l_day %></dd>
+<table class="List">
+  <tr>
+  	<th>Points</th>
+  	<th>Preferred</th>
+    <th>First</th>
+    <th>Last</th>
+    <th>Number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @students.each do |student| %>
+  <tr class="List" onmouseover="this.className='hover'" onmouseout="this.className='List'">
+  	<td> <strong><%= render 'refresh', :student => student %></strong></td>
+  	<td><%= student.preferred_name %></td>
+    <td><%= link_to student.fname, student %></td>
+    <td><%= student.lname %></td>
+    <td><%= student.student_no %></td>
+    <td><%= link_to image_tag("up.png"), increase_student_path(student), :method => :put , remote: false%></td>
+    <td><%= link_to image_tag("down.png"), decrease_student_path(student), :method => :put, remote: false %></td>
+	<td><%= render "/pass_d_points/form", :student => student %></td>
+  </tr>
+<% end %>
+</table>
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
+  <%= link_to t('.back'),
               courses_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_course_path(@course), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              course_path(@course),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+  <%= link_to t('Add Students'),
+              new_student_path, :class => 'btn' %>
+  <%= link_to t('Statistics'),
+ 			  statistic_course_path(@course.id), :class => 'btn' %>
 </div>
+
+
+<%= will_paginate @students %>
