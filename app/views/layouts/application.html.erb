@@ -48,8 +48,8 @@
           <a class="brand" href="#">ADSUM2</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "View Courses", courses_path %></li>
             <% if session[:user_id] %>
+            <li><%= link_to "View Courses", courses_path %></li>
 	    	<li><%= link_to "Edit Account", edit_user_path(session[:user_id]) %></li>
 	        <li><%= link_to "Logout", logout_path, method: :delete %></li>
 	        <% else %>
@@ -69,12 +69,18 @@
           </div>
           <div class="span3">
             <div class="well sidebar-nav">
-              <h3>Sidebar</h3>
+              <h3>Menu</h3>
               <ul class="nav nav-list">
-                <li class="nav-header">Sidebar</li>
-                <li><%= link_to "Link1", "/path1"  %></li>
+
+                <% if session[:user_id] %>
+                <li class="nav-header">Choose an Option</li>
+                <li><%= link_to "Add Course", new_course_path  %></li>
                 <li><%= link_to "Link2", "/path2"  %></li>
                 <li><%= link_to "Link3", "/path3"  %></li>
+                <% else %>
+               	<li class="nav-header">Welcome!</li>
+                <li class="nav-header">Log In to View Options</li>
+                <% end %>
               </ul>
             </div><!--/.well -->
           </div><!--/span-->
