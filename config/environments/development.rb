@@ -36,7 +36,7 @@ ADSUM2::Application.configure do
   config.assets.debug = true
 end
 
-ADSUM::Application.configure do
+ADSUM2::Application.configure do
   config.action_mailer.delivery_method = :smtp
 
 
