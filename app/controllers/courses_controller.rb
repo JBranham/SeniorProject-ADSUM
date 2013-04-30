@@ -23,6 +23,9 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @current_user = User.find_by_id(session[:user_id])
     session[:course_id] = @course.id
+    if @course.students.count.zero?
+      redirect_to new_student_path, notice: "Add Students!"
+    else
     @pass_d_point = @course.pass_d_points.build
     @designated_point = DesignatedPoint.find_by_id(session[:d_id])
     @students = @course.students.paginate page: params[:page], order: 'lname asc', per_page: 25
@@ -34,6 +37,7 @@ class CoursesController < ApplicationController
     end
     else
       redirect_to login_url, notice: "Not Authorized"
+    end
     end
   end
   # GET /courses/new
