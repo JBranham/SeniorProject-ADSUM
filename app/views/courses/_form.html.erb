@@ -1,28 +1,71 @@
-<%= form_for @course, :html => { :class => 'form-horizontal' } do |f| %>
+<%= nested_form_for @course, :html => { :class => 'form-horizontal' } do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
+    <%= f.label "Course Name:", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :user_id, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :f_day, :class => 'control-label' %>
+    <%= f.label "First Day:", :class => 'control-label' %>
     <div class="controls">
       <%= f.date_select :f_day, :class => 'date_select' %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :l_day, :class => 'control-label' %>
+    <%= f.label "Last Day:", :class => 'control-label' %>
     <div class="controls">
       <%= f.date_select :l_day, :class => 'date_select' %>
     </div>
   </div>
+  <p>
+  <div class="field">
+  	<%= f.label "Lecture Days" %>
+  	<%= f.fields_for 'lecture_days' do |ff| %>
+		M<%= ff.check_box :monday %>
+		T<%= ff.check_box :tuesday %>
+		W<%= ff.check_box :wednesday %>
+		R<%= ff.check_box :thursday %>
+		F<%= ff.check_box :friday %>
+		Sa<%= ff.check_box :saturday %>
+		Su<%= ff.check_box :sunday %>
+	<% end %><br />
+  </div>
+  </p>
+  
+  
+  		<%= f.fields_for 'designated_points' do |f4| %>
+  		<p>
+		  <div class="field">
+		    <%= f4.label "Designated Point Description" %>
+		    <%= f4.text_field :name %>
+		  </div>
+		  <div class="field">
+		    <%= f4.label "Amount of Points" %>
+		    <%= f4.number_field :num %>
+		  </div>
+		  <div class="field">
+			<%= f4.hidden_field :course_id, :value => @course.id %>
+		  </div>
+		  <div class="field">
+		  <%= f4.link_to_remove "Remove Designated Point", :class => 'link'%>
+		  </div>
+  		<% end %>
+  		</p>
+<p>
+<%= f.link_to_add "Add Another Designated Point", :designated_points, :class => 'link'%>
+</p>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
