@@ -9,3 +9,7 @@
   <%= file_field_tag :file %>
   <%= submit_tag "Import", :class => 'btn btn-primary' %>
 <% end %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              new_student_path, :class => 'btn'  %>
+</div>

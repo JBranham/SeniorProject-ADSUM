@@ -68,7 +68,6 @@
             <div class="well sidebar-nav">
               <h3>Menu</h3>
               <ul class="nav nav-list">
-
                 <% if session[:user_id] %>
                 <li class="nav-header">Choose a Course</li>
                 <% @courses.each do |course| %>
@@ -79,6 +78,7 @@
                	<li class="nav-header">Welcome!</li>
                 <li><%= link_to 'Login to View Options', login_path %></li>
                 <% end %>
+
               </ul>
             </div><!--/.well -->
           </div><!--/span-->

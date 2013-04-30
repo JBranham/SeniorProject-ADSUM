@@ -3,3 +3,5 @@
   <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human %></h1>
 </div>
 <%= render :partial => 'form' %>
+
+  <%= button_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>

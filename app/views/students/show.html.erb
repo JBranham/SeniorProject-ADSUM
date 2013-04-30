@@ -43,7 +43,7 @@
 <%= will_paginate @pass_d_points %>
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              students_path, :class => 'btn'  %>
+              @course, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_student_path(@student), :class => 'btn' %>
 </div>

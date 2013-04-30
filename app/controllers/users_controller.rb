@@ -85,7 +85,8 @@ class UsersController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to new_sessions_path }
+      format.html { redirect_to '/' }
+      session[:user_id] = nil
       format.json { head :no_content }
     end
   end
