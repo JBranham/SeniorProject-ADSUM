@@ -29,8 +29,9 @@
     </div>
   </div>
   <p>
-  <div class="field">
-  	<%= f.label "Lecture Days" %>
+  <div class="control-group">
+  	<%= f.label "Lecture Days", :class => 'control-label' %>
+  	<div class="controls">
   	<%= f.fields_for 'lecture_days' do |ff| %>
 		M<%= ff.check_box :monday %>
 		T<%= ff.check_box :tuesday %>
@@ -40,19 +41,24 @@
 		Sa<%= ff.check_box :saturday %>
 		Su<%= ff.check_box :sunday %>
 	<% end %><br />
+	</div>
   </div>
   </p>
   
   
   		<%= f.fields_for 'designated_points' do |f4| %>
   		<p>
-		  <div class="field">
-		    <%= f4.label "Designated Point Description" %>
+		  <div class="control-group">
+		    <%= f4.label "Point Description", :class => 'control-label' %>
+		    <div class="controls">
 		    <%= f4.text_field :name %>
+		    </div>
 		  </div>
-		  <div class="field">
-		    <%= f4.label "Amount of Points" %>
+		  <div class="control-group">
+		    <%= f4.label "Amount of Points", :class => 'control-label' %>
+		    <div class="controls">
 		    <%= f4.number_field :num %>
+		    </div>
 		  </div>
 		  <div class="field">
 			<%= f4.hidden_field :course_id, :value => @course.id %>
@@ -62,8 +68,8 @@
 		  </div>
   		<% end %>
   		</p>
-<p>
-<%= f.link_to_add "Add Another Designated Point", :designated_points, :class => 'link'%>
+<p></p><p>
+<%= f.link_to_add "Add Another Designated Point", :designated_points, :class => 'btn'%>
 </p>
   <%= f.hidden_field :user_id, :value => session[:user_id] %>
 
