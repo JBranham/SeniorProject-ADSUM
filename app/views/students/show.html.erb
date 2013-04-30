@@ -1,6 +1,6 @@
 <%- model_class = Student -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1>Info for <%= @student.fname %> <%= @student.lname %></h1>
 </div>
 
 
@@ -30,16 +30,20 @@
 </p>
 ---------------------------------------------
 </div>
+
 <div class="field" align="center">
-	<b>List of Points</b>
+
+	<h3>List of Points</h3>
 	<table>
 	<% @pass_d_points.each do |points| %>
 	<td><%= points.descr %></td><td></td><td></td>
 	<td><%= points.created_at.to_date %></td>
+	<tr><p></p></tr>
 	<tr></tr>
 	<% end %>
 	</table>
 </div>
+
 <%= will_paginate @pass_d_points %>
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
