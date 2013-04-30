@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Dear <%= @user.name %>,</h1>
+    <p>
+      	We have recently detected that student: <% student.name %>
+		has been absent over <%= student.attendances.count(:conditions => { :absent => true}) %>
+		times this semester.<br/>
+    </p>
+    <p>
+      This student exceeds the number of allowed absences
+    </p>
+    <p>Thank you and have a great day!</p>
+  </body>
+</html>

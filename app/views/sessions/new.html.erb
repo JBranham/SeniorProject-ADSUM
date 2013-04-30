@@ -1,2 +1,33 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+
+<h1 align="center">ADSUM Login</h1>
+
+<div>
+<% if flash[:alert] %>
+<p id="notice"><%= flash[:alert] %></p>
+<% end %>
+<%= form_tag do %>
+<fieldset>
+<legend>Please Log In</legend>
+<div>
+<table width="135%">
+<td><%= label_tag :name, 'Name:' %></td>
+<td float="right"><%= text_field_tag :name, params[:name] %></td>
+</table>
+</div>
+<div>
+<table width="100%">
+<td><%= label_tag :password, 'Password:' %></td>
+<td float="right"><%= password_field_tag :password, params[:password] %></td>
+</table>
+</div>
+<div>
+<table width="160%">
+<tr></tr>
+<tr></tr>
+<td><%= submit_tag "Login" %></td>
+<td float="right"><%= link_to "Create Account", new_user_path%></td>
+</table>
+</div>
+</fieldset>
+<% end %>
+</div>
