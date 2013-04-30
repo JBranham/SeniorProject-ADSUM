@@ -3,29 +3,47 @@
   <h1><%=t '.title', :default => model_class.model_name.human %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:fname) %>:</strong></dt>
-  <dd><%= @student.fname %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:lname) %>:</strong></dt>
-  <dd><%= @student.lname %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:student_no) %>:</strong></dt>
-  <dd><%= @student.student_no %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:points) %>:</strong></dt>
-  <dd><%= @student.points %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:preferred_name) %>:</strong></dt>
-  <dd><%= @student.preferred_name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:course_id) %>:</strong></dt>
-  <dd><%= @student.course_id %></dd>
-</dl>
 
+<p id="notice"><%= notice %></p>
+<div class = "field" align = "center">
+<p>
+	<b>Preferred Name:</b>
+	<%= @student.preferred_name %>
+<p>
+  <b>First Name:</b>
+  <%= @student.fname %>
+</p>
+
+<p>
+  <b>Last Name:</b>
+  <%= @student.lname %>
+</p>
+
+<p>
+  <b>Student Number:</b>
+  <%= @student.student_no %>
+</p>
+
+<p>
+	<b>Total Points:</b>
+	<%= @student.points %>
+</p>
+---------------------------------------------
+</div>
+<div class="field" align="center">
+	<b>List of Points</b>
+	<table>
+	<% @pass_d_points.each do |points| %>
+	<td><%= points.descr %></td><td></td><td></td>
+	<td><%= points.created_at.to_date %></td>
+	<tr></tr>
+	<% end %>
+	</table>
+</div>
+<%= will_paginate @pass_d_points %>
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               students_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_student_path(@student), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              student_path(@student),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
 </div>

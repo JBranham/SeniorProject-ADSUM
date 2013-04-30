@@ -13,6 +13,17 @@
   <dt><strong><%= model_class.human_attribute_name(:designated_point_id) %>:</strong></dt>
   <dd><%= @pass_d_point.designated_point_id %></dd>
 </dl>
+</div>
+<div class="field" align="center">
+	<b>List of Points</b>
+	<table>
+	<% @pass_d_points.each do |points| %>
+	<td><%= points.descr %></td><td></td><td></td>
+	<td><%= points.created_at.to_date %></td>
+	<tr></tr>
+	<% end %>
+	</table>
+</div>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
