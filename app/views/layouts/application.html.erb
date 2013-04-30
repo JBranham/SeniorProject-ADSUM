@@ -70,10 +70,11 @@
               <ul class="nav nav-list">
 
                 <% if session[:user_id] %>
-                <li class="nav-header">Choose an Option</li>
+                <li class="nav-header">Choose a Course</li>
+                <% @user.courses.each do |course| %>
+                <li><%= link_to course.name, course  %></li>
+                <% end %>
                 <li><%= link_to "Add Course", new_course_path  %></li>
-                <li><%= link_to "Link2", "/path2"  %></li>
-                <li><%= link_to "Link3", "/path3"  %></li>
                 <% else %>
                	<li class="nav-header">Welcome!</li>
                 <li><%= link_to 'Login to View Options', login_path %></li>
