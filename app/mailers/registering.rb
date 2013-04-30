@@ -3,7 +3,7 @@ class Registering < ActionMailer::Base
     
     def registration_confirmation(user)
       @user = user
-      @url  = ""
+      @url  = "adsum2.herokuapp.com"
       mail to: user.email, subject: 'ADSUM registration confirmation'
     end
     

@@ -44,8 +44,8 @@ ADSUM2::Application.configure do
     address: "smtp.gmail.com",
     port: 587,
     authentication: "login",
-    user_name: "jay.branham",
-    password: "Nosajrand123",
+    user_name: "adsumapp",
+    password: "user1adsum",
     enable_starttls_auto: true
   }
 end
