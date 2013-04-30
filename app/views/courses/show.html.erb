@@ -18,7 +18,7 @@
 <% @students.each do |student| %>
   <tr class="List" onmouseover="this.className='hover'" onmouseout="this.className='List'">
   	<td> <strong><%= student.points %></strong></td>
-  	<td><%= student.preferred_name %></td>
+  	<td><%= link_to student.preferred_name, student %></td>
     <td><%= link_to student.fname, student %></td>
     <td><%= student.lname %></td>
     <td><%= link_to image_tag("up.png"), increase_student_path(student), :method => :put , remote: false%></td>
