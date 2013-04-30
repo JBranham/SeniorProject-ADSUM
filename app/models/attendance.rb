@@ -6,9 +6,9 @@ class Attendance < ActiveRecord::Base
   def attendance_to_asterisk (attendance_field)
     
     if attendance_field
-      return "|*|"
+      return "| * |"
     else
-       return "|--|"
+       return "  "
     end  
   end
   

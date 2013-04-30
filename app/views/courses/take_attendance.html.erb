@@ -16,7 +16,7 @@
 
 <% @students.each do |student| %>
   <tr class="List" onmouseover="this.className='hover'" onmouseout="this.className='List'">
-  	<td><%= student.preferred_name %></td>
+  	<td><%= link_to student.preferred_name, student %></td>
     <td><%= link_to student.fname, student %></td>
     <td><%= student.lname %></td>
 	<%= render '/attendances/form', :f => student,:course_id => @course.id, :student_id => student.id %>
@@ -27,13 +27,13 @@
 
 <div class="form-actions">
   <%= link_to t('.back'),
-              courses_path, :class => 'btn'  %>
+              @course, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_course_path(@course), :class => 'btn' %>
   <%= link_to t('Take Attendance'),
  			  take_attendance_course_path(@course.id), :class => 'btn' %>	
-  <%= link_to t('Add Students'),
-              new_student_path, :class => 'btn' %>
+  <%= link_to t('Old Attendances'),
+              attendances_path, :class => 'btn' %>
   <%= link_to t('Statistics'),
  			  statistic_course_path(@course.id), :class => 'btn' %>
 </div>
