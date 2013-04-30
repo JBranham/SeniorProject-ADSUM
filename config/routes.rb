@@ -1,24 +1,51 @@
 ADSUM2::Application.routes.draw do
-  get "sessions/new"
-
-  get "sessions/create"
-
-  get "sessions/destroy"
-
-  resources :users
-
-  resources :students
-
-  resources :pass_d_points
+  get "courses/take_attendance"
+  get "courses/points"
+  get "courses/statistic"
 
   resources :lecture_days
 
-  resources :designated_points
+  resources :pass_q_points
 
-  resources :courses
+  resources :pass_d_points
+
+  resources :enrollments
 
   resources :attendances
 
+  resources :designated_points
+
+  resources :quick_points
+
+  resources :students do
+    collection { post :import }
+  end
+
+  get 'admin' => 'admin#index'
+
+  controller :sessions do
+    get  'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  resources :courses
+
+  resources :users
+  
+  get "sessions/new"
+
+  resources :courses do
+    get "take_attendance", :on => :member
+    get "points", :on => :member
+    get "statistic", :on => :member
+  end
+  
+   resources :students do
+    put 'decrease', on: :member
+    put 'increase', on: :member
+    put 'dp', on: :member
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -69,7 +96,7 @@ ADSUM2::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-
+  root to: 'sessions#new'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
