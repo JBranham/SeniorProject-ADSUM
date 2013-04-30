@@ -1,29 +1,31 @@
 <%- model_class = Course -%>
 <div class="page-header">
-  <h1><%= @course.name %></h1>
+  <h1>Stats for <%= @course.name %></h1>
 </div>
 
 <dl class="dl-horizontal">
 <table class="List">
   <tr>
-  	<th>|Points|</th>
   	<th>|Preferred|</th>
-  	<th>|First|</th>
-  	<th>|Last|</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>|First|</th>
+    <th>|Last|</th>
+    <th>|Points|</th>
+    <th>|Present|</th>
+    <th>|Tardy|</th>
+    <th>|Absent|</th>
+    <th>|Excused|</th>
   </tr>
 
 <% @students.each do |student| %>
   <tr class="List" onmouseover="this.className='hover'" onmouseout="this.className='List'">
-  	<td> <strong><%= student.points %></strong></td>
-  	<td><%= student.preferred_name %></td>
-    <td><%= link_to student.fname, student %></td>
+  	<td><%= link_to student.preferred_name, student %></td>
+    <td><%= student.fname %></td>
     <td><%= student.lname %></td>
-    <td><%= link_to image_tag("up.png"), increase_student_path(student), :method => :put , remote: false%></td>
-    <td><%= link_to image_tag("down.png"), decrease_student_path(student), :method => :put, remote: false %></td>
-	<td><%= render "/pass_d_points/form", :student => student %></td>
+	<td><%= student.points %></td>
+	<td><%= student.attendances.count(:conditions => { :present => true}) %></td>
+	<td><%= student.attendances.count(:conditions => { :tardy => true}) %></td>
+	<td><%= student.attendances.count(:conditions => { :absent => true}) %></td>
+	<td><%= student.attendances.count(:conditions => { :excused => true}) %></td>
   </tr>
 <% end %>
 </table>
