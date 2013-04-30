@@ -4,7 +4,8 @@
 </div>
 
 <dl class="dl-horizontal">
-<table class="List">
+<table class="table table-striped">
+  <thead>
   <tr>
   	<th>|Points|</th>
   	<th>|Preferred|</th>
@@ -14,7 +15,8 @@
     <th></th>
     <th></th>
   </tr>
-
+	</thead>
+	<tbody>
 <% @students.each do |student| %>
   <tr class="List" onmouseover="this.className='hover'" onmouseout="this.className='List'">
   	<td> <strong><%= student.points %></strong></td>
@@ -26,6 +28,7 @@
 	<td><%= render "/pass_d_points/form", :student => student %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 </dl>
 
