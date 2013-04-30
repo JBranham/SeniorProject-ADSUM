@@ -42,7 +42,6 @@ class CoursesController < ApplicationController
     @user = User.find_by_id(session[:id])
     @course = Course.new
     @lecture_day = @course.lecture_days.build
-    @quick_points = @course.quick_points.build
     @designated_points = @course.designated_points.build
  
     respond_to do |format|
