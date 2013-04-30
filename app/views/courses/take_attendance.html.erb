@@ -4,7 +4,8 @@
 </div>
 
 <dl class="dl-horizontal">
-<table class="List">
+<table class="table table-striped">
+	<thead>
   <tr>
   	<th>|Preferred|</th>
   	<th>|First|</th>
@@ -13,7 +14,8 @@
     <th></th>
     <th></th>
   </tr>
-
+  </thead>
+<tbody>
 <% @students.each do |student| %>
   <tr class="List" onmouseover="this.className='hover'" onmouseout="this.className='List'">
   	<td><%= link_to student.preferred_name, student %></td>
@@ -22,6 +24,7 @@
 	<%= render '/attendances/form', :f => student,:course_id => @course.id, :student_id => student.id %>
   </tr>
 <% end %>
+</tbody>
 </table>
 </dl>
 
