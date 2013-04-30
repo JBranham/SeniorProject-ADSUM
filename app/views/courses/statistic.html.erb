@@ -4,7 +4,8 @@
 </div>
 
 <dl class="dl-horizontal">
-<table class="List">
+<table class="table table-striped">
+	<thead>
   <tr>
   	<th>|Preferred|</th>
     <th>|First|</th>
@@ -15,6 +16,8 @@
     <th>|Absent|</th>
     <th>|Excused|</th>
   </tr>
+  </thead>
+  <tbody>
 
 <% @students.each do |student| %>
   <tr class="List" onmouseover="this.className='hover'" onmouseout="this.className='List'">
@@ -28,6 +31,7 @@
 	<td><%= student.attendances.count(:conditions => { :excused => true}) %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 </dl>
 
