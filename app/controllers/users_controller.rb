@@ -47,6 +47,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         Registering.registration_confirmation(@user).deliver
+        session[:user_id] = @user.id
         format.html { redirect_to new_course_path, 
           notice: "User #{@user.name} was successfully created." }
         format.json { render json: @user, status: :created, location: @user }
