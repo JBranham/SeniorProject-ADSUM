@@ -1,12 +1,11 @@
 <%- model_class = Course -%>
 <div class="page-header">
-  <h1><%= @course.name %></h1>
+  <h1>Attendance for <%= @course.name %></h1>
 </div>
 
 <dl class="dl-horizontal">
 <table class="List">
   <tr>
-  	<th>|Points|</th>
   	<th>|Preferred|</th>
   	<th>|First|</th>
   	<th>|Last|</th>
@@ -17,13 +16,10 @@
 
 <% @students.each do |student| %>
   <tr class="List" onmouseover="this.className='hover'" onmouseout="this.className='List'">
-  	<td> <strong><%= student.points %></strong></td>
   	<td><%= student.preferred_name %></td>
     <td><%= link_to student.fname, student %></td>
     <td><%= student.lname %></td>
-    <td><%= link_to image_tag("up.png"), increase_student_path(student), :method => :put , remote: false%></td>
-    <td><%= link_to image_tag("down.png"), decrease_student_path(student), :method => :put, remote: false %></td>
-	<td><%= render "/pass_d_points/form", :student => student %></td>
+	<%= render '/attendances/form', :f => student,:course_id => @course.id, :student_id => student.id %>
   </tr>
 <% end %>
 </table>

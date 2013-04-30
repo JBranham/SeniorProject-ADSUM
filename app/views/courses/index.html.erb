@@ -1,28 +1,22 @@
 <%- model_class = Course -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+  <h1>All Courses for <%= @user.name %></h1>
 </div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:f_day) %></th>
-      <th><%= model_class.human_attribute_name(:l_day) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name("First Day") %></th>
+      <th><%= model_class.human_attribute_name("Last Day") %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= link_to course.id, course_path(course) %></td>
-        <td><%= course.name %></td>
-        <td><%= course.user_id %></td>
+        <td><%= link_to course.name, course, :class => 'link' %></td>
         <td><%= course.f_day %></td>
         <td><%= course.l_day %></td>
-        <td><%=l course.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_course_path(course), :class => 'btn btn-mini' %>
@@ -36,7 +30,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @courses %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_course_path,
             :class => 'btn btn-primary' %>

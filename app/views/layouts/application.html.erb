@@ -71,7 +71,7 @@
 
                 <% if session[:user_id] %>
                 <li class="nav-header">Choose a Course</li>
-                <% @user.courses.each do |course| %>
+                <% @courses.each do |course| %>
                 <li><%= link_to course.name, course  %></li>
                 <% end %>
                 <li><%= link_to "Add Course", new_course_path  %></li>

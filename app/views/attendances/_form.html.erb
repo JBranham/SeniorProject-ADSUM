@@ -1,50 +1,33 @@
 <%= form_for @attendance, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :Date, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.date_select :Date, :class => 'date_select' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :present, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :present, :class => 'check_box' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :absent, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :absent, :class => 'check_box' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :tardy, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :tardy, :class => 'check_box' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :excused, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :excused, :class => 'check_box' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :student_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :student_id, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :course_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :course_id, :class => 'number_field' %>
-    </div>
-  </div>
+<td>
+    	  <div class="field">
+    		<%= f.label "P" %>
+    		<%= f.check_box :present %>
+  		  </div>
+  	</td>
+    <td>
+    	  <div class="field">
+    		<%= f.label "A" %>
+    		<%= f.check_box :absent %>
+  		  </div>
+  	</td>
+  	<td>
+    	  <div class="field">
+    		<%= f.label "T" %>
+    		<%= f.check_box :tardy %>
+  		  </div>
+  	</td>
+  	<td>
+    	  <div class="field">
+    		<%= f.label "E" %>
+    		<%= f.check_box :excused %>
+  		  </div>
+  	</td>
+  	<%= f.hidden_field :course_id, :value => @course.id %>
+	<%= f.hidden_field :student_id, :value => student_id %>
+	<%= f.hidden_field :Date, :value => Time.now %>
 
-  <div class="form-actions">
+  <td>
     <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                attendances_path, :class => 'btn' %>
-  </div>
+  </td>
 <% end %>

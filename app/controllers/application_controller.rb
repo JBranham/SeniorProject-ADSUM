@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
     def detect_user
       if session[:user_id]
         @user = User.find_by_id(session[:user_id])
+        @courses = @user.courses.each
       end
     end
     

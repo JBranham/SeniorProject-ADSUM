@@ -129,6 +129,7 @@ class CoursesController < ApplicationController
   
   def take_attendance
     @course = Course.find(params[:id])
+    @students = @course.students.paginate page: params[:page], order: 'lname asc', per_page: 25
     @attendance = @course.attendances.build 
     @course = Course.find(params[:id])
     @current_user = User.find_by_id(session[:user_id])
