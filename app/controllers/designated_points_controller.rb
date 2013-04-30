@@ -15,11 +15,18 @@ class DesignatedPointsController < ApplicationController
   # GET /designated_points/1
   # GET /designated_points/1.json
   def show
-    @designated_point = DesignatedPoint.find(params[:id])
-    @course = Course.find_by_id(session[:course_id])
+    
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @designated_point }
+      
+      format.html {
+        @designated_point = DesignatedPoint.find(params[:id])
+        @course = Course.find_by_id(session[:course_id])
+        
+      }# show.html.erb
+      format.json { 
+        @cc = Course.find(params[:id])
+        @designated_points = @cc.designated_points
+        render json: @designated_points }
     end
   end
 
