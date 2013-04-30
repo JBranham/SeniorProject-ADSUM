@@ -24,8 +24,11 @@
 <table width="160%">
 <tr></tr>
 <tr></tr>
-<td><%= submit_tag "Login" %></td>
-<td float="right"><%= link_to "Create Account", new_user_path%></td>
+<td>  <div class="form-actions">
+    <%= submit_tag "Log In", :class => 'btn btn-primary' %>
+    <%= link_to t('Create Account'),
+                new_user_path, :class => 'btn' %>
+</td></div>
 </table>
 </div>
 </fieldset>
